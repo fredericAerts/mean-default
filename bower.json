@@ -1,0 +1,16 @@
+{
+  "name": "mean-default",
+  "description": "MEAN Walking Skeleton",
+  "main": "index.js",
+  "authors": [
+    "Frederic Aerts <info@fredericaerts.com> (http://fredericaerts.com/)"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/fredericJos/mean-default",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-resource": "^1.6.1",
+    "angular-ui-router": "ui-router#^0.4.2"
+  }
+}
