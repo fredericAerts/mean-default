@@ -7,8 +7,8 @@
 
   function DefaultViewController(defaultViewDataService, common, logger) {
     const vm = this;
-    vm.myVar = 'Hello Default View!';
-    vm.dbMessage = '';
+    vm.helloDefaultView = 'Hello Default View!';
+    vm.helloMongo = '';
 
     activate();
 
@@ -23,9 +23,9 @@
       return defaultViewDataService
         .getDefaultViewMessage()
         .then((message) => {
-          vm.dbMessage = message;
+          vm.helloMongo = message;
 
-          return vm.dbMessage;
+          return vm.helloMongo;
         })
         .finally(() => {
 

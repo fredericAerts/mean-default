@@ -6,7 +6,7 @@
   /* @ngInject */
   function ShellController(logger) {
     const vm = this;
-    vm.myVar = 'Hello Shell!';
+    vm.helloShell = 'Hello Shell!';
 
     activate();
 

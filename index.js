@@ -20,17 +20,16 @@ db.connection.once('open', () => {
   console.log('db opened');
 });
 
-/*  Views config and static files
+/*  Views config
     ======================================================== */
 app.set('views', './server/views');
 app.set('view engine', 'ejs');
-app.use(express.static('./public'));
 
-/*  Requests and Responses
+/*  Routing
     ======================================================== */
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
+app.use(express.static('./public'));
 app.use('/data', require('./server/routes/data-routes')(DefaultModel));
 app.get('*', (req, res) => {
   res.render('index');

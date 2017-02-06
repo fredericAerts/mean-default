@@ -1,6 +1,8 @@
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+/*  Schema for 'defaultmodels' collection
+    ============================================================ */
 const defaultSchema = new Schema({
   message: {
     type: String
