@@ -1,16 +1,14 @@
-'use strict';
+/* eslint-disable import/no-extraneous-dependencies */
 
-const gulp = require('gulp'),
-  plugins = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'gulp.*'],
-    replaceString: /\bgulp[\-.]/
-  });
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const config = require('../gulp.config');
 
-gulp.task('lint', function() {
-  return gulp.src([
-      'src/js/**/*.module.js',
-      'src/js/**/*.js'
-    ])
-    .pipe(plugins.eslint())
-    .pipe(plugins.eslint.format());
-});
+gulp.task('lint', () => gulp.src([
+  config.src.js.app,
+  config.gulp.js.all,
+  config.server.js.entry,
+  config.server.js.modules,
+])
+.pipe(eslint())
+.pipe(eslint.format()));

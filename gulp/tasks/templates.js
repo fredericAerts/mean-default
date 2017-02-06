@@ -1,8 +1,7 @@
-'use strict';
+/* eslint-disable import/no-extraneous-dependencies */
 
 const gulp = require('gulp');
+const config = require('../gulp.config');
 
-gulp.task('moveTemplates', function() {
-  return gulp.src(['./src/js/**/*.html'])
-    .pipe(gulp.dest('./public/templates'));
-});
+gulp.task('moveTemplates', () => gulp.src(config.src.templates.all)
+  .pipe(gulp.dest(config.dest.templates)));

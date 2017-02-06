@@ -1,29 +1,31 @@
-'use strict';
+/* eslint-disable import/no-extraneous-dependencies */
 
-const gulp = require('gulp'),
-  plugins = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'gulp.*'],
-    replaceString: /\bgulp[\-.]/
-  });
+const gulp = require('gulp');
+const cached = require('gulp-cached');
+const babel = require('gulp-babel');
+const remember = require('gulp-remember');
+const concat = require('gulp-concat');
+const ngAnnotate = require('gulp-ng-annotate');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const config = require('../gulp.config');
 
-// scripts
-gulp.task('scripts', () => {
-  return gulp.src([
-      './src/vendor/angular/angular.js',
-      './src/vendor/angular-resource/angular-resource.js',
-      './src/vendor/angular-route/angular-route.js',
-      './src/vendor/angular-animate/angular-animate.js',
-      './src/js/**/*.module.js',
-      './src/js/**/*.js'
-    ])
-    .pipe(plugins.cached())
-    .pipe(plugins.babel({
-      presets: ['es2015'],
-      compact: true
-    }))
-    .pipe(plugins.remember())
-    .pipe(plugins.concat('script.js'))
-    .pipe(plugins.rename({suffix: '.min'}))
-    // .pipe(plugins.uglify())
-    .pipe(gulp.dest('./public/js'));
-});
+gulp.task('scripts', () => gulp.src([
+  ...config.src.js.vendor,
+  config.src.js.entry,
+  config.src.js.app,
+])
+.pipe(cached())
+.pipe(babel({
+  presets: ['es2015'],
+  compact: true,
+}))
+.pipe(remember())
+.pipe(concat('script.js'))
+.pipe(ngAnnotate({
+  add: true,
+  single_quotes: true,
+}))
+.pipe(rename({ suffix: '.min' }))
+.pipe(uglify())
+.pipe(gulp.dest(config.dest.js)));

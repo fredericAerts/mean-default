@@ -1,13 +1,16 @@
-'use strict';
+/* eslint-disable import/no-extraneous-dependencies */
 
-const gulp = require('gulp'),
-  plugins = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'gulp.*'],
-    replaceString: /\bgulp[\-.]/
-  });
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const config = require('../gulp.config');
 
 gulp.task('watch', () => {
-  gulp.watch('./src/css/**/*.scss', ['styles']);
-  gulp.watch('./src/js/**/*.js', ['scripts', 'lint']);
-  gulp.watch('./src/js/**/*.html', ['moveTemplates']);
+  gulp.watch(config.src.css.all, ['styles']);
+  gulp.watch(config.src.js.app, ['scripts', 'lint', browserSync.reload]);
+  gulp.watch(config.src.templates.all, ['moveTemplates', browserSync.reload]);
+  gulp.watch([
+    config.server.js.entry,
+    config.server.js.modules,
+    config.gulp.js.all,
+  ], ['lint']);
 });

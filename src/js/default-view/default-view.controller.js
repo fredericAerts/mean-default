@@ -3,8 +3,7 @@
     .module('app.default-view')
     .controller('DefaultViewController', DefaultViewController);
 
-  DefaultViewController.$inject = ['defaultViewDataService', 'common', 'logger'];
-
+  /* @ngInject */
   function DefaultViewController(defaultViewDataService, common, logger) {
     const vm = this;
     vm.helloDefaultView = 'Hello Default View!';

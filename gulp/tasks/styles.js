@@ -1,25 +1,25 @@
-'use strict';
+/* eslint-disable import/no-extraneous-dependencies */
 
-const gulp = require('gulp'),
-  plugins = require("gulp-load-plugins")({
-    pattern: ['gulp-*', 'gulp.*'],
-    replaceString: /\bgulp[\-.]/
-  }),
-  browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const cssnano = require('gulp-cssnano');
+const browserSync = require('browser-sync');
+const config = require('../gulp.config');
 
-gulp.task('styles', () => {
-  return gulp.src('./src/css/main.scss')
-    .pipe(plugins.sass().on('error', plugins.sass.logError))
-    .pipe(plugins.autoprefixer({
-      cascade: false
-    }))
-    .pipe(plugins.concat('style.css'))
-    .pipe(plugins.rename({suffix: '.min'}))
-    .pipe(plugins.cssnano({
-      discardComments: {
-        removeAll: true
-      }
-    }))
-    .pipe(gulp.dest('./public/css'))
-    .pipe(browserSync.stream());
-});
+gulp.task('styles', () => gulp.src(config.src.css.entry)
+  .pipe(sass().on('error', sass.logError))
+  .pipe(autoprefixer({
+    cascade: false,
+  }))
+  .pipe(concat('style.css'))
+  .pipe(rename({ suffix: '.min' }))
+  .pipe(cssnano({
+    discardComments: {
+      removeAll: true,
+    },
+  }))
+  .pipe(gulp.dest(config.dest.css))
+  .pipe(browserSync.stream()));

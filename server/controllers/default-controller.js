@@ -1,18 +1,17 @@
-const defaultController = function(DefaultModel){
-
-  const get = function(req,res){
-    DefaultModel.findOne().exec(function(err, defaultData) {
-      if (err)
+const defaultController = (DefaultModel) => {
+  const get = (req, res) => {
+    DefaultModel.findOne().exec((err, defaultData) => {
+      if (err) {
         res.status(500).send(err);
-      else {
+      } else {
         res.json(defaultData.message);
       }
     });
-  }
+  };
 
   return {
     get,
-  }
-}
+  };
+};
 
 module.exports = defaultController;
