@@ -4,10 +4,10 @@ const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const config = require('../gulp.config');
 
-gulp.task('lint', () => gulp.src([
-  config.gulp.js.all,
-  config.server.js.entry,
-  config.server.js.modules,
+gulp.task('lint-app', () => gulp.src([
+  config.src.js.app,
 ])
-.pipe(eslint())
+.pipe(eslint({
+  configFile: config.src.js.eslintConfig,
+}))
 .pipe(eslint.format()));

@@ -4,7 +4,7 @@ const gulp = require('gulp');
 
 // development
 gulp.task('default', ['build'], () => {
-  gulp.start('lint', 'watch', 'serve');
+  gulp.start('lint', 'lint-app', 'watch', 'serve');
 });
 
 gulp.task('build', ['clean'], () => {

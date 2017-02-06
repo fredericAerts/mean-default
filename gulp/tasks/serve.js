@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable angular/timeout-service */
 
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
 const browserSync = require('browser-sync');
+const config = require('../gulp.config');
 
 gulp.task('serve', ['nodemon'], () => {
   browserSync({
@@ -22,8 +22,11 @@ gulp.task('nodemon', (cb) => {
   let called = false;
 
   return nodemon({
-    script: 'server.js',
-    watch: ['server.js', 'server/**/*.js'],
+    script: config.server.js.entry,
+    watch: [
+      config.server.js.entry,
+      config.server.js.modules,
+    ],
   })
   .on('start', () => {
     // ensure start only got called once

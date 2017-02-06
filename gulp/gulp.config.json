@@ -12,7 +12,8 @@
         "./src/vendor/angular-animate/angular-animate.js"
       ],
       "entry": "./src/js/**/*.module.js",
-      "app": "./src/js/**/*.js"
+      "app": "./src/js/**/*.js",
+      "eslintConfig": "./src/.eslintrc"
     },
     "templates": {
       "all": "./src/js/**/*.html"

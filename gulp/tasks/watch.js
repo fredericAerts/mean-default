@@ -6,7 +6,7 @@ const config = require('../gulp.config');
 
 gulp.task('watch', () => {
   gulp.watch(config.src.css.all, ['styles']);
-  gulp.watch(config.src.js.app, ['scripts', 'lint', browserSync.reload]);
+  gulp.watch(config.src.js.app, ['scripts', 'lint-app', browserSync.reload]);
   gulp.watch(config.src.templates.all, ['moveTemplates', browserSync.reload]);
   gulp.watch([
     config.server.js.entry,
