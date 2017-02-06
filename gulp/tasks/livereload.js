@@ -5,13 +5,13 @@ const gulp = require('gulp'),
     pattern: ['gulp-*', 'gulp.*'],
     replaceString: /\bgulp[\-.]/
   }),
-  browserSync = require('../utils/browser-sync').browserSync;
+  browserSync = require('browser-sync').create();
 
-gulp.task('livereload', function() {
+gulp.task('livereload', () => {
   browserSync.init(null, {
     proxy: 'http://localhost:5000',
       files: ['public/**/*.*'],
       browser: 'google chrome',
-      port: 7000,
+      port: 3000,
   });
 });

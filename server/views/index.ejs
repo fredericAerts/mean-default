@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MEAN default</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% include ../includes/meta/head.ejs %>
+  <body ng-app="app">
 
-    <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="icon" type="image/png" href="/favicon.ico">
-  </head>
-  <body>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
+    <div class="container">
+      <div ng-include="'/templates/layout/shell.html'" class="fade-animation"></div>
+      <div class="splash-page" ng-show="false">
+        One moment please
+      </div>
+    </div>
 
-    <script src="/js/script.min.js"></script>
+    <% include ../includes/meta/foot.ejs %>
   </body>
 </html>

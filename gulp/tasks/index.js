@@ -1,12 +1,12 @@
 'use strict';
 
-var gulp = require('gulp');
+const gulp = require('gulp');
 
 // development
-gulp.task('default', ['build'], function() {
-  gulp.start('watch', 'livereload');
+gulp.task('default', ['build'], () => {
+  gulp.start('lint', 'watch', 'livereload');
 });
 
 gulp.task('build', () => {
-  gulp.start('styles', 'scripts');
+  gulp.start('styles', 'scripts', 'moveTemplates');
 })
