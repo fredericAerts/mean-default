@@ -27,7 +27,7 @@
   "server": {
     "js": {
       "entry": "server.js",
-      "modules": "./server/**/*.js"
+      "modules": "server/**/*.js"
     }
   },
   "gulp": {
