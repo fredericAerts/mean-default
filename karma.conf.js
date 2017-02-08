@@ -15,13 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/vendor/angular/angular.js',
+      ...require('./gulp/gulp.config').src.js.vendor,
       'src/vendor/angular-mocks/angular-mocks.js',
-      'src/vendor/angular-resource/angular-resource.js',
-      'src/vendor/angular-route/angular-route.js',
-      'src/vendor/angular-animate/angular-animate.js',
-      'src/js/**/*.module.js',
-      'src/js/**/*.js',
+      require('./gulp/gulp.config').src.js.entry,
+      require('./gulp/gulp.config').src.js.app,
       'spec/frontend/**/*.js'
     ],
 

@@ -30,6 +30,9 @@
       "modules": "server/**/*.js"
     }
   },
+  "spec": {
+    "all": "./spec/frontend/**/*.js"
+  },
   "gulp": {
     "js": {
       "all": "./gulp/**/*.js"

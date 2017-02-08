@@ -12,7 +12,7 @@ describe('default view data service', () => {
     DATA_URL = _DATA_URL_;
   }));
 
-  it("should return default message...", () => {
+  it('should return default message...', () => {
     let response;
 
     $httpBackend.expect('GET', DATA_URL)
