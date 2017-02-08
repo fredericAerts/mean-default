@@ -6,7 +6,6 @@
   /* @ngInject */
   function defaultViewDataService(DATA_URL,
     $http,
-    common,
     exception) {
     const service = {
       getDefaultViewMessage,

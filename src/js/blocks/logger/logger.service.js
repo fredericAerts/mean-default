@@ -28,7 +28,7 @@
     }
 
     function warning(message, data) {
-      $log.warning(`Warning: ${message}`, data || '');
+      $log.warn(`Warning: ${message}`, data || '');
     }
 
     function debug(message, data) {
