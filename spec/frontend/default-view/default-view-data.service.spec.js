@@ -27,4 +27,20 @@ describe('default view data service', () => {
 
     expect(response).toEqual(defaultViewMessage);
   });
+
+  it('should handle error...', () => {
+    let response;
+
+    $httpBackend.expect('GET', DATA_URL)
+    .respond(500);
+
+    defaultViewDataService.getDefaultViewMessage()
+    .then((data) => {
+      response = data;
+    });
+
+    $httpBackend.flush();
+
+    expect(response).toEqual('error');
+  })
 });
