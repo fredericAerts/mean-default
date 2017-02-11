@@ -4,8 +4,9 @@
     .factory('common', common);
 
   /* @ngInject */
-  function common($q) {
+  function common($rootScope, $q) {
     const service = {
+      $rootScope,
       $q,
     };
 

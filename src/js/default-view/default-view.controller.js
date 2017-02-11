@@ -14,21 +14,21 @@
     function activate() {
       const promises = [fetchDefaultViewDatabaseMessage()];
       return common.$q.all(promises).then(() => {
-        logger.debug('Activated Default View ');
+        logger.debug('Activated Default View');
       });
     }
 
     function fetchDefaultViewDatabaseMessage() {
       return defaultViewDataService
-        .getDefaultViewMessage()
-        .then((message) => {
-          vm.helloMongo = message;
+      .getDefaultViewMessage()
+      .then((message) => {
+        vm.helloMongo = message;
 
-          return vm.helloMongo;
-        })
-        .finally(() => {
+        return vm.helloMongo;
+      })
+      .finally(() => {
 
-        });
+      });
     }
   }
 })();

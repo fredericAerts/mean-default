@@ -42,5 +42,5 @@ describe('default view data service', () => {
     $httpBackend.flush();
 
     expect(response).toEqual('error');
-  })
+  });
 });
